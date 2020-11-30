@@ -6,7 +6,8 @@ const GlobalStyles = createGlobalStyle`
     a{text-decoration:none; color:inherit;}
 
     *{box-sizing:border-box;}
-    body{font-size:14px; color:#fff; background-color:#111; padding-top:70px;}
+    body{width:100%; height:100vh; font-size:14px; color:#fff; background-color:#111; overflow-wrap: break-word;}
+    #root{width:100%; height:100%;}
     button{outline:none; cursor:pointer;}
 `;
 
