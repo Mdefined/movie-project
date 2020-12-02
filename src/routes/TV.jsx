@@ -1,1 +1,0 @@
-export default () => <div>tv프로그램</div>;
