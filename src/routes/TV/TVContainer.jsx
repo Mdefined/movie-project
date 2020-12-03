@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { tvReq } from '../../api/api';
+import TVPresenter from './TVPresenter';
 
 
 
 function TVContainer(){
 
-    const [load, setLoad] = useState(false);
+    const [load, setLoad] = useState(true);
     const [tvData, setTVData] = useState({});
 
     const getTVData = async () =>{
         try{
-            setLoad(true)
             const {data : latestTV} = await tvReq.latest();
-            console.log(latestTV);
+            const {data : {results : airingTodayTV}} = await tvReq.airingToday();
+            const {data : {results : popularTV}} = await tvReq.popular();
+            console.log(latestTV, airingTodayTV, popularTV);
             setTVData({
-                latestTV
+                latestTV,
+                airingTodayTV,
+                popularTV
             })
             
         }catch(error){
@@ -30,7 +34,7 @@ function TVContainer(){
     return(
         <>
             {
-                load ? null : <div>{tvData.latestTV.original_name}</div>                
+                load ? null : <TVPresenter tvData={tvData}/>               
             }
         </>
     );
