@@ -1,9 +1,10 @@
 import React from 'react';
 import Poster from '../../components/Poster';
+import {PaddingContainer} from '../../components/Container';
 
 function TVPresenter({tvData}){
     return(
-        <>
+        <PaddingContainer>
             {
                tvData.latestTV ? (<Poster title={tvData.latestTV.original_name} />) : null
             }
@@ -17,7 +18,7 @@ function TVPresenter({tvData}){
                    return <Poster title={item.original_name} poster_path={item.poster_path} overview={item.overview}/>
                })) : null
             }
-        </>
+        </PaddingContainer>
     );
 }
 

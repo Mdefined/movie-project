@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {PaddingContainer} from '../../components/Container';
 
 const HomeWrap = styled.div`
     width:100%;
@@ -29,6 +30,7 @@ function HomePresenter(props){
                     <h2>Lorem ipsum dolor sit amet.</h2>
                     <button>MORE</button>
                 </ImgBox>
+                <PaddingContainer></PaddingContainer>
                 </HomeWrap>
             ): "null"}
         </>

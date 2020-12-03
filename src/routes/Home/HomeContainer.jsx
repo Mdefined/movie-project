@@ -21,12 +21,10 @@ function HomeContainer(){
                 latest,
                 nowPlaying,
                 upcoming
-            })
+            });
         }catch(error){
             setError(error);
         }
-        
-        
     }
 
     useEffect(() => {

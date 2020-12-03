@@ -1,10 +1,11 @@
 import React from 'react';
 import Poster from '../../components/Poster';
+import {PaddingContainer} from '../../components/Container';
 
 function MoviePresenter({movieData}){
     console.log(movieData.latest)
     return(
-        <>
+        <PaddingContainer>
             {
                 movieData.nowPlayingMovie ? movieData.nowPlayingMovie.map(item=> {
                     return (
@@ -31,7 +32,7 @@ function MoviePresenter({movieData}){
                 }) : null
             }
             
-        </>
+        </PaddingContainer>
     );
 }
 

@@ -34,7 +34,7 @@ function TVContainer(){
     return(
         <>
             {
-                load ? null : <TVPresenter tvData={tvData}/>               
+                load ? "로딩중" : <TVPresenter tvData={tvData}/>               
             }
         </>
     );

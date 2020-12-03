@@ -12,7 +12,8 @@ export const movieReq = {
     latest : () => api.get("movie/latest"),
     nowPlaying : () => api.get("movie/now_playing"),
     popular : () => api.get("movie/popular"),
-    upcoming : () => api.get("movie/upcoming")
+    upcoming : () => api.get("movie/upcoming"),
+    detail : (id) => api.get(`movie/${id}`),
 }
 
 export const tvReq = {

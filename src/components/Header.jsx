@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {BiSearch} from 'react-icons/bi';
+import Container from './Container';
 
 const HeaderWrap = styled.header`
     width:100%;
@@ -12,14 +13,6 @@ const HeaderWrap = styled.header`
     background-color: #111;
 `;
 
-const Container = styled.div`
-    width:1200px;
-    height:100%;
-    margin:0 auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-`;
 
 const UlWrap = styled.ul`
     display:flex;
