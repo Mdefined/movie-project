@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './Header';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Home from '../routes/Home';
-import Movie from '../routes/Movie';
-import TV from '../routes/TV';
+import Movie from '../routes/Movie/';
+import TV from '../routes/TV/';
 import Bookmark from '../routes/Bookmark';
 
 

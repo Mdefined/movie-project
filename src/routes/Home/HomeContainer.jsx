@@ -14,7 +14,7 @@ function HomeContainer(){
             const {data:latest } = await movieReq.latest();
             const {data:{results:nowPlaying}} = await movieReq.nowPlaying();
             const {data:{results:upcoming}} = await movieReq.upcoming();
-            console.log(popular,latest,nowPlaying,upcoming);
+        
             setLoad(false);
             setMoviedata({
                 popular,
@@ -25,6 +25,7 @@ function HomeContainer(){
         }catch(error){
             setError(error);
         }
+        
         
     }
 

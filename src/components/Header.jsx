@@ -9,6 +9,7 @@ const HeaderWrap = styled.header`
     position:fixed;
     top:0;
     left:0;
+    background-color: #111;
 `;
 
 const Container = styled.div`
