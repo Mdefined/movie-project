@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {PaddingContainer} from '../../components/Container';
+import Poster from '../../components/Poster';
 
 const HomeWrap = styled.div`
     width:100%;
@@ -37,7 +38,8 @@ const TitleWrap =styled.div`
     }
 `;
 
-function HomePresenter({moviedata}){
+function HomePresenter({moviedata, tvdata}){
+    console.log(moviedata, tvdata)
 
     const [random, setRandom] = useState(0);
     
@@ -47,15 +49,43 @@ function HomePresenter({moviedata}){
 
     return(
         <>
-            {moviedata.popular ? (
+            {moviedata.popularMovie ? (
                 <HomeWrap>
-                <ImgBox url={moviedata.popular[random].backdrop_path}>
+                <ImgBox url={moviedata.popularMovie[random].backdrop_path}>
                     <TitleWrap>
-                        <h2>{moviedata.popular[random].overview}</h2>
+                        <h2>{moviedata.popularMovie[random].overview}</h2>
                         <button>MORE</button>
                     </TitleWrap>
                 </ImgBox>
-                <PaddingContainer></PaddingContainer>
+                <PaddingContainer>
+                    {
+                        moviedata.latestMovie ? (
+                            <Poster title={moviedata.latestMovie.original_title} />
+                        ) : null 
+                    }
+                    {
+                        moviedata.nowPlayingMovie ? moviedata.nowPlayingMovie.map(item =>{
+                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                        }) : null
+                    }
+                    {
+                        moviedata.popularMovie ? moviedata.popularMovie.map(item =>{
+                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                        }) : null
+                    }
+                    {
+                        moviedata.upcomingMovie ? moviedata.upcomingMovie.map(item =>{
+                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                        }) : null
+                    }
+                </PaddingContainer>
+                <PaddingContainer>
+                    {
+                        tvdata.latestTV ? (
+                            <Poster title={tvdata.latestTV.original_name} poster_path={tvdata.latestTV.poster_path}/>
+                        ) : null
+                    }
+                </PaddingContainer>
                 </HomeWrap>
             ): "null"}
         </>
