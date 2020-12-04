@@ -42,7 +42,7 @@ function HomeContainer(){
         }catch(error){
             console.log(error);
         }finally{
-            setError(false);
+            setError(false); // 이게 모야 -ㅅ-
         }
     }
 
