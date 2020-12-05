@@ -89,7 +89,7 @@ function HomePresenter({moviedata, tvdata}){
                     }
                     {
                         tvdata.airingTodayTV ? (tvdata.airingTodayTV.map(item=>{
-                            return (
+                            return (    
                                 <Poster url={`tv/${item.id}`} key={item.id} title={item.original_name} poster_path={item.poster_path} />
                             )
                         })) : null
