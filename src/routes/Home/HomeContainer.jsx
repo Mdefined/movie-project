@@ -25,14 +25,16 @@ function HomeContainer(){
             });
         }catch(error){
             setError(error);
+        }finally{
+            setLoad(false);
         }
     }
 
     const getTV = async () => {
         try{
             const {data : lastestTV} = await tvReq.latest();
-            const {data : {result : airingTodayTV}} = await tvReq.airingToday();
-            const {data : {result : popularTV}} = await tvReq.popular();  
+            const {data : {results : airingTodayTV}} = await tvReq.airingToday();
+            const {data : {results : popularTV}} = await tvReq.popular();  
             
             setTVData({
                 lastestTV,
@@ -42,7 +44,7 @@ function HomeContainer(){
         }catch(error){
             console.log(error);
         }finally{
-            setError(false); // 이게 모야 -ㅅ-
+            setLoad(false);
         }
     }
 

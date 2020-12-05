@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterWrap = styled.div`
+const FooterWrap = styled.footer`
     width:100%;
     height: 100px;
     background-color: #292929;

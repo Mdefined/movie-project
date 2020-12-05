@@ -5,6 +5,7 @@ import Home from '../routes/Home';
 import Movie from '../routes/Movie/';
 import TV from '../routes/TV/';
 import Bookmark from '../routes/Bookmark';
+import Detail from '../routes/Detail/';
 
 
 
@@ -13,9 +14,11 @@ const Routers = () => (
         <Header />
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/movie" component={Movie} />
-            <Route path="/tv" component={TV} />
+            <Route path="/movie" exact component={Movie} />
+            <Route path="/tv" exact component={TV} />
             <Route path="/bookmark" component={Bookmark} />
+            <Route path="/movie/:id" component={Detail} />
+            <Route path="/tv/:id" component={Detail} />
             <Redirect form="*" to="/" />
         </Switch>
     </Router>

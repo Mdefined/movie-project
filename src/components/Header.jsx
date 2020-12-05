@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {BiSearch} from 'react-icons/bi';
-import Container from './Container';
+import {HeaderContainer} from './Container';
 
 const HeaderWrap = styled.header`
     width:100%;
@@ -11,6 +11,7 @@ const HeaderWrap = styled.header`
     top:0;
     left:0;
     background-color: #111;
+    z-index: 999;
 `;
 
 
@@ -57,7 +58,7 @@ const Header = () => {
 
     return(
         <HeaderWrap>
-            <Container>
+            <HeaderContainer>
                 <TitleWrap>
                     <h1>
                         <Link to="/" className="logo">MOVIEDAY</Link>
@@ -82,7 +83,7 @@ const Header = () => {
                         </button>
                     </form>
                 </SearchWrap>
-            </Container>
+            </HeaderContainer>
         </HeaderWrap>
     );
 

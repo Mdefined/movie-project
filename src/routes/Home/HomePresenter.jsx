@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {PaddingContainer} from '../../components/Container';
 import Poster from '../../components/Poster';
@@ -32,10 +33,12 @@ const TitleWrap =styled.div`
         display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
 
     }
-    button{
-        border:2px solid #fff; background-color:transparent; padding:20px; width:200px; line-height:25px;
-        color:#fff; font-size:24px;
-    }
+`;
+
+const Button = styled(Link)`
+    border:2px solid #fff; background-color:transparent; padding:20px; width: 180px;
+    line-height: 15px; color: #fff; font-size: 20px; color:#fff;
+
 `;
 
 function HomePresenter({moviedata, tvdata}){
@@ -54,36 +57,43 @@ function HomePresenter({moviedata, tvdata}){
                 <ImgBox url={moviedata.popularMovie[random].backdrop_path}>
                     <TitleWrap>
                         <h2>{moviedata.popularMovie[random].overview}</h2>
-                        <button>MORE</button>
+                        <Button >MORE</Button>
                     </TitleWrap>
                 </ImgBox>
                 <PaddingContainer>
                     {
                         moviedata.latestMovie ? (
-                            <Poster title={moviedata.latestMovie.original_title} />
+                            <Poster url={`movie/${moviedata.latestMovie.id}`} title={moviedata.latestMovie.original_title} />
                         ) : null 
                     }
                     {
                         moviedata.nowPlayingMovie ? moviedata.nowPlayingMovie.map(item =>{
-                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                            return <Poster url={`movie/${item.id}`} key={item.id} title={item.title} poster_path={item.poster_path} />
                         }) : null
                     }
                     {
                         moviedata.popularMovie ? moviedata.popularMovie.map(item =>{
-                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                            return <Poster url={`/movie/${item.id}`} key={item.id} title={item.title} poster_path={item.poster_path} />
                         }) : null
                     }
                     {
                         moviedata.upcomingMovie ? moviedata.upcomingMovie.map(item =>{
-                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} overview={item.overview}/>
+                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} />
                         }) : null
                     }
                 </PaddingContainer>
                 <PaddingContainer>
                     {
-                        tvdata.latestTV ? (
-                            <Poster title={tvdata.latestTV.original_name} poster_path={tvdata.latestTV.poster_path}/>
+                        tvdata.lastestTV ? (
+                            <Poster title={tvdata.lastestTV.original_name} poster_path={tvdata.lastestTV.poster_path}/>
                         ) : null
+                    }
+                    {
+                        tvdata.airingTodayTV ? (tvdata.airingTodayTV.map(item=>{
+                            return (
+                                <Poster key={item.id} title={item.original_name} poster_path={item.poster_path} />
+                            )
+                        })) : null
                     }
                 </PaddingContainer>
                 </HomeWrap>
