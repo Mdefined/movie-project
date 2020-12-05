@@ -42,8 +42,7 @@ const Button = styled(Link)`
 `;
 
 function HomePresenter({moviedata, tvdata}){
-    console.log(moviedata, tvdata)
-
+    
     const [random, setRandom] = useState(0);
     
     useEffect(() => {
@@ -57,7 +56,7 @@ function HomePresenter({moviedata, tvdata}){
                 <ImgBox url={moviedata.popularMovie[random].backdrop_path}>
                     <TitleWrap>
                         <h2>{moviedata.popularMovie[random].overview}</h2>
-                        <Button >MORE</Button>
+                        <Button url={`movie/${moviedata.popularMovie[random].id}`}>MORE</Button>
                     </TitleWrap>
                 </ImgBox>
                 <PaddingContainer>
@@ -78,20 +77,20 @@ function HomePresenter({moviedata, tvdata}){
                     }
                     {
                         moviedata.upcomingMovie ? moviedata.upcomingMovie.map(item =>{
-                            return <Poster key={item.id} title={item.title} poster_path={item.poster_path} />
+                            return <Poster url={`movie/${item.id}`} key={item.id} title={item.title} poster_path={item.poster_path} />
                         }) : null
                     }
                 </PaddingContainer>
                 <PaddingContainer>
                     {
                         tvdata.lastestTV ? (
-                            <Poster title={tvdata.lastestTV.original_name} poster_path={tvdata.lastestTV.poster_path}/>
+                            <Poster url={`tv/${tvdata.lastestTV.id}`} title={tvdata.lastestTV.original_name} poster_path={tvdata.lastestTV.poster_path}/>
                         ) : null
                     }
                     {
                         tvdata.airingTodayTV ? (tvdata.airingTodayTV.map(item=>{
                             return (
-                                <Poster key={item.id} title={item.original_name} poster_path={item.poster_path} />
+                                <Poster url={`tv/${item.id}`} key={item.id} title={item.original_name} poster_path={item.poster_path} />
                             )
                         })) : null
                     }

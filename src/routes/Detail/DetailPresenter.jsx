@@ -20,13 +20,18 @@ const ImgBox = styled.div`
 
 function DetailPresenter({data}){
     return(
-        <PaddingWrap>
-            <ImgBox backdrop_path={data.backdrop_path}>
-                <h2>{data.original_title}</h2>
-                <p>{data.overview}</p>
-            </ImgBox>
-            
-        </PaddingWrap>
+        <>
+            {
+                data ? (
+                    <PaddingWrap>
+                        <ImgBox backdrop_path={data.backdrop_path}>
+                            <h2>{data.original_title}</h2>
+                            <p>{data.overview}</p>
+                        </ImgBox>
+                    </PaddingWrap>
+                ) :null
+            }
+        </>
         
     );
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {movieReq} from '../../api/api';
+import {movieReq, tvReq} from '../../api/api';
 import DetailPresenter from './DetailPresenter';
 
 function DetailContainer({location: {pathname}}){
@@ -14,15 +14,25 @@ function DetailContainer({location: {pathname}}){
         console.log(data)
     }
 
+    const getTVDetail = async (id) =>{
+        const {data} = await tvReq.detail(id);
+        setData({...data})
+        console.log(data)
+    }
+
     useEffect(()=>{
-        const movieID = pathname.slice(7);
-        getMovieDetail(movieID);
+        if(pathname.split("/")[1] === "tv"){
+            const tvID = pathname.slice(4);
+            getTVDetail(tvID);
+        }else{
+            const movieID = pathname.slice(7);
+            getMovieDetail(movieID);
+        }
     },[])
 
     return(
         
         <DetailPresenter data={data} />
-
         
     );
 }
