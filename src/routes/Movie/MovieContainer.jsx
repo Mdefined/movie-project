@@ -14,12 +14,15 @@ function MovieContainer(){
             const {data:{results:nowPlayingMovie}} = await movieReq.nowPlaying();
             const {data:{results:popularMovie}} = await movieReq.popular();
             const {data:{results:upcomingMovie}} = await movieReq.upcoming();
-            console.log(latestMovie);
+            const {data : {results : videosMovie}} = await movieReq.videos(nowPlayingMovie[0].id);
+            const videosKey = videosMovie[0].key;
+            console.log(videosKey);
             setMovieData({
                 nowPlayingMovie,
                 popularMovie,
                 upcomingMovie,
-                latestMovie
+                latestMovie,
+                videosKey
             });
         }catch(error){
             console.log(error)

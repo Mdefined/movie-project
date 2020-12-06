@@ -13,7 +13,13 @@ export const movieReq = {
     nowPlaying : () => api.get("movie/now_playing"),
     popular : () => api.get("movie/popular"),
     upcoming : () => api.get("movie/upcoming"),
-    detail : (id) => api.get(`movie/${id}`),
+    detail : id => api.get(`movie/${id}`, {
+        params: {
+            append_to_response: "videos"
+        }
+    }),
+    videos : (id) =>api.get(`movie/${id}/videos`)   
+    
 }
 
 export const tvReq = {
@@ -22,3 +28,4 @@ export const tvReq = {
     popular : () => api.get("tv/popular"),
     detail : (id) => api.get(`tv/${id}`)
 }
+

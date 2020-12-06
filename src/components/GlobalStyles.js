@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     body{width:100%; height:100vh; font-size:14px; color:#fff; background-color:#111; overflow-wrap: break-word;}
     #root{width:100%; height:100%;}
     button{outline:none; cursor:pointer;}
+    .preview-video{margin-bottom:100px;}
 `;
 
 

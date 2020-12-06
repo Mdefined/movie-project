@@ -10,8 +10,10 @@ function DetailContainer({location: {pathname}}){
 
     const getMovieDetail = async (id) =>{
         const {data} = await movieReq.detail(id);
-        setData({...data})
-        console.log(data)
+        const {data : {videos : {results : detailVideos}}} = await movieReq.detail(id);
+        const detailKey = detailVideos[0].key;
+        setData({...data, detailKey})
+        console.log(detailKey)
     }
 
     const getTVDetail = async (id) =>{
