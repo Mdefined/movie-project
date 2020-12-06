@@ -18,7 +18,7 @@ export const movieReq = {
             append_to_response: "videos"
         }
     }),
-    videos : (id) =>api.get(`movie/${id}/videos`)   
+    videos : (id) => api.get(`movie/${id}/videos`)   
     
 }
 
@@ -26,6 +26,11 @@ export const tvReq = {
     latest : () => api.get("tv/latest"),
     airingToday : () => api.get("tv/airing_today"),
     popular : () => api.get("tv/popular"),
-    detail : (id) => api.get(`tv/${id}`)
+    detail : (id) => api.get(`tv/${id}`, {
+        params: {
+            append_to_response: "videos"
+        }
+    }),
+    videos : (id) => api.get(`tv/${id}/videos`)
 }
 

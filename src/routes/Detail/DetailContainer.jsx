@@ -6,14 +6,18 @@ function DetailContainer({location: {pathname}}){
 
     const [data, setData] = useState({});
 
-    console.log(pathname)
-
     const getMovieDetail = async (id) =>{
         const {data} = await movieReq.detail(id);
         const {data : {videos : {results : detailVideos}}} = await movieReq.detail(id);
-        const detailKey = detailVideos[0].key;
-        setData({...data, detailKey})
-        console.log(detailKey)
+        console.log(detailVideos)
+        if(detailVideos.length > 0){
+            const detailKey = detailVideos[0].key;
+            setData({...data, detailKey})
+        }else{
+            setData({...data})
+        }
+       
+        
     }
 
     const getTVDetail = async (id) =>{

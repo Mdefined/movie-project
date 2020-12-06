@@ -14,11 +14,14 @@ function TVContainer(){
             const {data : latestTV} = await tvReq.latest();
             const {data : {results : airingTodayTV}} = await tvReq.airingToday();
             const {data : {results : popularTV}} = await tvReq.popular();
-            console.log(latestTV, airingTodayTV, popularTV);
+            const {data : {results : detailTV}} = await tvReq.videos(airingTodayTV[1].id);
+            const detailKey = detailTV[0].key;
+            console.log(detailKey);
             setTVData({
                 latestTV,
                 airingTodayTV,
-                popularTV
+                popularTV,
+                detailKey
             })
             
         }catch(error){

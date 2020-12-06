@@ -13,7 +13,7 @@ const DataWrap = styled.div`
         url("http://image.tmdb.org/t/p/w220_and_h330_face${props => props.poster_path}");
         background-size: cover;
         background-repeat:no-repeat;
-        h2{
+        h3{
             position:absolute;
             bottom:20px;
             width:100%;
@@ -32,7 +32,7 @@ function Poster({url, title, poster_path}){
         <DataWrap poster_path={poster_path}>
             <Link to={url}>
                 <div className="img-box">
-                    <h2>{title}</h2>
+                    <h3>{title}</h3>
                 </div>
             </Link> 
         </DataWrap>

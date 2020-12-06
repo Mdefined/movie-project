@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {VideoContainer, PreviewContainer} from '../../components/Container';
+import {VideoContainer, ContentsContainer, NonePreviewWrap} from '../../components/Container';
 
 const PaddingWrap = styled.div`
     padding-top:70px;
@@ -9,7 +9,6 @@ const PaddingWrap = styled.div`
 const ImgBox = styled.div`
     width:100%; 
     height:500px;
-    margin-bottom: 100px;
     background:linear-gradient( rgba(255,255,255,0.8), rgba(0,0,0,0.9)),
     url("http://image.tmdb.org/t/p/w1920_and_h800_multi_faces${props => props.backdrop_path}");
     background-size:cover;
@@ -40,15 +39,22 @@ function DetailPresenter({data}){
                                     <img src={`http://image.tmdb.org/t/p/w220_and_h330_face${data.poster_path}`}/>
                                 </div>
                                 <TitleWrap>
-                                    <h2>{data.original_title}</h2>
+                                    {
+                                        data.original_title ? <h2>{data.original_title}</h2> : null 
+                                    }
                                     <p>{data.overview}</p> 
                                 </TitleWrap>
                             </VideoContainer>                         
                         </ImgBox>
-                        <PreviewContainer>
+                        <ContentsContainer>
                             <h2>PREVIEW</h2>
-                            <iframe className="preview-video" width="100%" height="650" src={`https://www.youtube.com/embed/${data.detailKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </PreviewContainer>
+                            {
+                                data.detailKey ? (
+                                    <iframe className="preview-video" width="100%" height="650" src={`https://www.youtube.com/embed/${data.detailKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                ) : (<NonePreviewWrap>미리보기 없음</NonePreviewWrap>)
+                            }
+                            
+                        </ContentsContainer>
                     </PaddingWrap>
                 ) :null
             }

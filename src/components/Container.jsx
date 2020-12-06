@@ -9,9 +9,10 @@ const Container = styled.div`
     justify-content:flex-start;
 `;
 
-export const PreviewContainer = styled.div`
+export const ContentsContainer = styled.div`
     width:1200px;
     height:auto;
+    padding:70px 0;
     margin:0 auto;
     h2{
         &:before{
@@ -42,9 +43,24 @@ export const HeaderContainer = styled(Container)`
 
 
 export const PaddingContainer = styled(Container)`
-    padding: 70px 0;
     flex-wrap: wrap;
     align-items: flex-start;
+`;
+
+export const VideoWtap = styled.div`
+    height:550px;
+    overflow:hidden;
+    position:relative;
+    iframe{position:absolute; top:-200px;}
+`; 
+
+export const NonePreviewWrap = styled.div`
+    width:100%;
+    height:300px;
+    font-size:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 `;
 
 export default Container;
