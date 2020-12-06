@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import HomePresenter from './HomePresenter';
-import {movieReq, tvReq} from '../../api/api';
+import {movieReq, tvReq, searchReq} from '../../api/api';
+import SearchContext from '../../components/Context';
 
 function HomeContainer(){
 
@@ -8,6 +9,8 @@ function HomeContainer(){
     const [error, setError] = useState("");
     const [moviedata, setMoviedata] = useState({});
     const [tvdata, setTVData] = useState({});
+    const {search} = useContext(SearchContext);
+    const [searchData, setSearchData] = useState([]);
 
     const getMovie = async () =>{
         try{
@@ -53,10 +56,27 @@ function HomeContainer(){
         getTV();
     },[])
 
+    const getSearchData = async () =>{
+        try{    
+            if(search === ""){
+                setSearchData(null);                 
+            }else{
+                const {data : {results: searchResults}} = await searchReq.search(search);
+                setSearchData([...searchResults]);  
+            }
+            
+        }catch(error){
+            console.log(error)
+        }
+    }
+  
+    useEffect(()=>{
+        getSearchData()        
+    },[search])
 
     return(
         <>
-            {load ? "로딩중" : (<HomePresenter moviedata={moviedata} tvdata={tvdata}/>)}
+            {load ? "로딩중" : (<HomePresenter searchData={searchData} moviedata={moviedata} tvdata={tvdata}/>)}
         </>
     );
 }

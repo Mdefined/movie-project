@@ -14,7 +14,7 @@ function TVContainer(){
             const {data : latestTV} = await tvReq.latest();
             const {data : {results : airingTodayTV}} = await tvReq.airingToday();
             const {data : {results : popularTV}} = await tvReq.popular();
-            const {data : {results : detailTV}} = await tvReq.videos(airingTodayTV[1].id);
+            const {data : {results : detailTV}} = await tvReq.videos(airingTodayTV[Math.floor(Math.random()*19)].id);
             const detailKey = detailTV[0].key;
             console.log(detailKey);
             setTVData({

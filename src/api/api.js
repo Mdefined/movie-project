@@ -34,3 +34,11 @@ export const tvReq = {
     videos : (id) => api.get(`tv/${id}/videos`)
 }
 
+export const searchReq = {
+    search : (keyword) => api.get("search/movie", {
+        params:{
+            query:encodeURIComponent(keyword)
+        }
+    })
+    
+}

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {BiSearch} from 'react-icons/bi';
 import {HeaderContainer} from './Container';
+import searchContext from '../components/Context';
 
 const HeaderWrap = styled.header`
     width:100%;
@@ -12,8 +13,8 @@ const HeaderWrap = styled.header`
     left:0;
     background-color: #111;
     z-index: 999;
+    box-shadow:0 2px 5px 1px rgba(0,0,0,1);
 `;
-
 
 const UlWrap = styled.ul`
     display:flex;
@@ -49,11 +50,14 @@ const InputArea = styled.input`
 `;
 
 const Header = () => {
+    
+    const {search, getSearchValue} = useContext(searchContext);
 
-    const [search, setSearch] = useState(false);
-
+    console.log(search)
+    const [searchBtn, setSearchBtn] = useState(false);
+  
     const openInput = () => {
-        setSearch(!search);
+        setSearchBtn(!searchBtn);
     }
 
     return(
@@ -77,7 +81,7 @@ const Header = () => {
                 </TitleWrap>
                 <SearchWrap>
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <InputArea type="text" placeholder="Search" toggle={search}/>
+                        <InputArea type="text" placeholder="Search" toggle={searchBtn} value={search} onChange={getSearchValue}/>
                         <button onClick={openInput}>
                             <BiSearch size="20" color="#fff"/>
                         </button>
