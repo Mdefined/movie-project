@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import HomePresenter from './HomePresenter';
-import {movieReq, tvReq, searchReq} from '../../api/api';
+import {movieReq, tvReq, searchMovieReq} from '../../api/api';
 import SearchContext from '../../components/Context';
 
 function HomeContainer(){
@@ -15,7 +15,7 @@ function HomeContainer(){
     const getMovie = async () =>{
         try{
             const {data:{results:popularMovie}} = await movieReq.popular();
-            const {data:latestMovie } = await movieReq.latest();
+            const {data:latestMovie} = await movieReq.latest();
             const {data:{results:nowPlayingMovie}} = await movieReq.nowPlaying();
             const {data:{results:upcomingMovie}} = await movieReq.upcoming();
         
@@ -61,7 +61,7 @@ function HomeContainer(){
             if(search === ""){
                 setSearchData(null);                 
             }else{
-                const {data : {results: searchResults}} = await searchReq.search(search);
+                const {data : {results: searchResults}} = await searchMovieReq.search(search);
                 setSearchData([...searchResults]);  
             }
             

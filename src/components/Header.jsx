@@ -53,7 +53,6 @@ const Header = () => {
     
     const {search, getSearchValue} = useContext(searchContext);
 
-    console.log(search)
     const [searchBtn, setSearchBtn] = useState(false);
   
     const openInput = () => {

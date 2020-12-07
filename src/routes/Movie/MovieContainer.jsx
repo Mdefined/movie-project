@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import { movieReq } from '../../api/api';
+import React, {useState, useEffect, useContext} from 'react';
+import { movieReq, searchMovieReq } from '../../api/api';
+import SearchContext from '../../components/Context';
 import MoviePresenter from './MoviePresenter';
 
 function MovieContainer(){
 
     const [load, setLoad] = useState(false);
     const [movieData, setMovieData] = useState({});
+    const {search} = useContext(SearchContext);
+    const [movieSearchData, setMovieSearchData] = useState({});
 
     const getMovie = async () =>{
         try{
@@ -30,14 +33,33 @@ function MovieContainer(){
         } 
     }
 
+    const getMovieSearchData = async () =>{
+        try{
+            if(search === ""){
+                setMovieSearchData(null);
+            }else{
+                const {data : {results : searchMovie}} = await searchMovieReq.search(search);
+                console.log(searchMovie)
+                setMovieSearchData({...searchMovie})
+            }
+        }catch(error){
+            console.log(error)
+        }
+        
+    }
+
     useEffect(()=>{
         getMovie();
     },[])
 
+    useEffect(()=>{
+        getMovieSearchData();
+    },[search])
+
     return(
         <>
             {
-                load ? null : (<MoviePresenter movieData={movieData}/>) 
+                load ? null : (<MoviePresenter movieSearchData={movieSearchData} movieData={movieData}/>) 
             } 
         </>               
     );
