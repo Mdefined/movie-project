@@ -16,7 +16,6 @@ function MovieContainer(){
             const {data:{results:upcomingMovie}} = await movieReq.upcoming();
             const {data : {results : videosMovie}} = await movieReq.videos(nowPlayingMovie[Math.floor(Math.random()*19)].id);
             const videosKey = videosMovie[0].key;
-            console.log(videosKey);
             setMovieData({
                 nowPlayingMovie,
                 popularMovie,

@@ -4,25 +4,20 @@ import {PaddingContainer, SubContainer, ContentsContainer, VideoWtap} from '../.
 
 
 function MoviePresenter({movieData}){
-    console.log(movieData.latest)
     return(
         <>
-            <SubContainer>
-                {
-                    movieData.videosKey ? (
-                        <VideoWtap>
-                            <iframe 
-                                width="100%" height="1000px" 
-                                src={`https://www.youtube.com/embed/${movieData.videosKey}?mute=1&control=0&autoplay=1&amp;loop=1`} 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </VideoWtap>
-                    ) : null
-                }
-            </SubContainer>
-
+            {
+                movieData.videosKey ? (
+                    <VideoWtap>
+                        <iframe 
+                            width="100%" height="1200px" 
+                            src={`https://www.youtube.com/embed/${movieData.videosKey}?mute=1&control=0&autoplay=1&amp;loop=1`} 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen>
+                        </iframe>
+                    </VideoWtap>
+                ) : null
+            }
             <ContentsContainer>
                 <h2>MOVIE</h2>
                 <PaddingContainer>

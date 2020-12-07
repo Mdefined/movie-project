@@ -32,7 +32,7 @@ function DetailPresenter({data}){
         <>
             {
                 data ? (
-                    <PaddingWrap>
+                    <>
                         <ImgBox backdrop_path={data.backdrop_path}>
                             <VideoContainer>
                                 <div>
@@ -55,7 +55,7 @@ function DetailPresenter({data}){
                             }
                             
                         </ContentsContainer>
-                    </PaddingWrap>
+                    </>
                 ) :null
             }
         </>

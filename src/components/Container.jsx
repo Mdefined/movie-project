@@ -9,10 +9,16 @@ const Container = styled.div`
     justify-content:flex-start;
 `;
 
+export const Contents = styled.div`
+    width:100%;
+    padding:70px 0;
+    flex:1 0 auto;
+`;
+
 export const ContentsContainer = styled.div`
     width:1200px;
     height:auto;
-    padding:70px 0;
+    padding-top:70px;
     margin:0 auto;
     h2{
         &:before{
@@ -48,10 +54,10 @@ export const PaddingContainer = styled(Container)`
 `;
 
 export const VideoWtap = styled.div`
-    height:550px;
+    height:750px;
     overflow:hidden;
     position:relative;
-    iframe{position:absolute; top:-200px;}
+    iframe{position:absolute; top:-230px;}
 `; 
 
 export const NonePreviewWrap = styled.div`

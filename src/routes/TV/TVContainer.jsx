@@ -16,7 +16,6 @@ function TVContainer(){
             const {data : {results : popularTV}} = await tvReq.popular();
             const {data : {results : detailTV}} = await tvReq.videos(airingTodayTV[Math.floor(Math.random()*19)].id);
             const detailKey = detailTV[0].key;
-            console.log(detailKey);
             setTVData({
                 latestTV,
                 airingTodayTV,
@@ -33,6 +32,7 @@ function TVContainer(){
     useEffect(()=>{
         getTVData();
     },[])
+    
 
     return(
         <>

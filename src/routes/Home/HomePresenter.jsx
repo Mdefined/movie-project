@@ -8,8 +8,6 @@ import SearchContext from '../../components/Context';
 const HomeWrap = styled.div`
     width:100%;
     min-height:100%;
-    flex: 1 0 auto;
-    padding-top:70px;
 `;
 
 const ImgBox = styled.div`
@@ -49,9 +47,6 @@ const NoneresultTitle = styled.div`
     font-weight:bold;
 `;
 
-const SearchContainer = styled(ContentsContainer)`
-    padding-top:100px;
-`;
 
 function HomePresenter({moviedata, tvdata, searchData}){
     
@@ -62,7 +57,6 @@ function HomePresenter({moviedata, tvdata, searchData}){
         setRandom(Math.floor(Math.random()*20));
     },[])
 
-    console.log(searchData)
     if(!searchData){
         return(
             <>
@@ -132,7 +126,7 @@ function HomePresenter({moviedata, tvdata, searchData}){
     }else if(searchData.length > 0){
         return(
             <>
-            <SearchContainer>
+            <ContentsContainer>
                 <h2>검색결과</h2>
                 <PaddingContainer>
                     {
@@ -141,7 +135,7 @@ function HomePresenter({moviedata, tvdata, searchData}){
                         }) : null
                     }
                 </PaddingContainer>
-            </SearchContainer>
+            </ContentsContainer>
 
             </>
         );

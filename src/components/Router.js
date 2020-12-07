@@ -6,21 +6,24 @@ import Movie from '../routes/Movie/';
 import TV from '../routes/TV/';
 import Bookmark from '../routes/Bookmark';
 import Detail from '../routes/Detail/';
+import {Contents} from '../components/Container';
 
 
 
 const Routers = () => (
     <Router>
         <Header />
-        <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/movie" exact component={Movie} />
-            <Route path="/tv" exact component={TV} />
-            <Route path="/bookmark" component={Bookmark} />
-            <Route path="/movie/:id" component={Detail} />
-            <Route path="/tv/:id" component={Detail} />
-            <Redirect form="*" to="/" />
-        </Switch>
+        <Contents>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/movie" exact component={Movie} />
+                <Route path="/tv" exact component={TV} />
+                <Route path="/bookmark" component={Bookmark} />
+                <Route path="/movie/:id" component={Detail} />
+                <Route path="/tv/:id" component={Detail} />
+                <Redirect form="*" to="/" />
+            </Switch>
+        </Contents>
     </Router>
 );
 export default Routers;
