@@ -126,16 +126,16 @@ function HomePresenter({moviedata, tvdata, searchData}){
     }else if(searchData.length > 0){
         return(
             <>
-            <ContentsContainer>
-                <h2>검색결과</h2>
-                <PaddingContainer>
-                    {
-                        searchData ? searchData.map(item=>{
-                            return <Poster url={`movie/${item.id}`} title={item.original_title} poster_path={item.poster_path} />
-                        }) : null
-                    }
-                </PaddingContainer>
-            </ContentsContainer>
+                <ContentsContainer>
+                    <h2>검색결과</h2>
+                    <PaddingContainer>
+                        {
+                            searchData ? searchData.map(item=>{
+                                return <Poster url={`movie/${item.id}`} title={item.original_title} poster_path={item.poster_path} />
+                            }) : null
+                        }
+                    </PaddingContainer>
+                </ContentsContainer>
 
             </>
         );

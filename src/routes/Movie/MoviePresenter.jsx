@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Poster from '../../components/Poster';
-import {PaddingContainer, ContentsContainer, VideoWtap} from '../../components/Container';
+import SearchContext from '../../components/Context';
+import {PaddingContainer, ContentsContainer, SubContainer, VideoWtap} from '../../components/Container';
+import styled from 'styled-components';
 
-
+const NoneresultTitle = styled.div`
+    min-height:700px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    font-weight:bold;
+`; 
 function MoviePresenter({movieData, movieSearchData}){
 
+    const {search} = useContext(SearchContext);
     if(!movieSearchData){
         return(
             <>
@@ -55,16 +65,23 @@ function MoviePresenter({movieData, movieSearchData}){
         );
     }else if(movieSearchData.length === 0){
         return (
-            <div>결과없음</div>
+            <SubContainer>
+                <NoneresultTitle>{search} 검색 결과없음</NoneresultTitle>
+            </SubContainer>
         );
-    }else if(movieSearchData.length > 1){
+    }else if(movieSearchData.length > 0){
         return(
             <>
-                {
-                    movieSearchData ? movieSearchData.map(item =>{
-                        return <Poster key={item.id} url={`movie/${item.id}`} title={item.original_title} poster_path={item.poster_path} />
-                    }) : null
-                }
+                <ContentsContainer>
+                    <h2>검색결과</h2>
+                    <PaddingContainer>
+                        {
+                            movieSearchData ? movieSearchData.map(item =>{
+                                return <Poster key={item.id} url={`movie/${item.id}`} title={item.original_title} poster_path={item.poster_path} />
+                            }) : null
+                        }
+                    </PaddingContainer>
+                </ContentsContainer>
             </>
         );  
     }

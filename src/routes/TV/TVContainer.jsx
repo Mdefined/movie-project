@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { tvReq } from '../../api/api';
+import { tvReq, searchTVReq } from '../../api/api';
 import TVPresenter from './TVPresenter';
 import Loading from '../../components/Loading';
 import SearchContext from '../../components/Context';
@@ -10,7 +10,7 @@ function TVContainer(){
     const [load, setLoad] = useState(true);
     const [tvData, setTVData] = useState({});
     const {search} = useContext(SearchContext);
-    const [searchTV, setSearchTV] = useState([]);
+    const [searchTV, setSearchTV] = useState(null);
 
     const getTVData = async () =>{
         try{
@@ -39,9 +39,20 @@ function TVContainer(){
         }
     }
 
-    const getSearchTV = () =>{
-        console.log(search);
-        setSearchTV();
+    const getSearchTV = async () =>{
+        try{
+            if(search === ""){
+                setSearchTV(null);
+                
+            }else{
+                const {data : {results : searchDataTV}} = await searchTVReq.searchTV(search);
+                setSearchTV([...searchDataTV]);
+            }   
+        }catch(error){
+            console.log(error)
+        }
+        console.log(search)
+        
     }
 
     useEffect(()=>{
