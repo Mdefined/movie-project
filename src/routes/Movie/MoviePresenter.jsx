@@ -9,16 +9,16 @@ function MoviePresenter({movieData, movieSearchData}){
         return(
             <>
                 {
-                    movieData.videosKey ? (
+                    movieData.MovievideosKey ? (
                         <VideoWtap>
                             <iframe 
                                 width="100%" height="1200px" 
-                                src={`https://www.youtube.com/embed/${movieData.videosKey}?mute=1&control=0&autoplay=1&amp;loop=1`} 
+                                src={`https://www.youtube.com/embed/${movieData.MovievideosKey}?mute=1&control=0&autoplay=1&amp;loop=1`} 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowFullScreen>
                             </iframe>
                         </VideoWtap>
-                    ) : null
+                    ) : <img src={`http://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movieData.popularMovie[0].backdrop_path}`}/> 
                 }
                 <ContentsContainer>
                     <h2>MOVIE</h2>

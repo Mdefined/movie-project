@@ -8,7 +8,7 @@ function MovieContainer(){
     const [load, setLoad] = useState(false);
     const [movieData, setMovieData] = useState({});
     const {search} = useContext(SearchContext);
-    const [movieSearchData, setMovieSearchData] = useState({});
+    const [movieSearchData, setMovieSearchData] = useState([]);
 
     const getMovie = async () =>{
         try{
@@ -18,13 +18,19 @@ function MovieContainer(){
             const {data:{results:popularMovie}} = await movieReq.popular();
             const {data:{results:upcomingMovie}} = await movieReq.upcoming();
             const {data : {results : videosMovie}} = await movieReq.videos(nowPlayingMovie[Math.floor(Math.random()*19)].id);
-            const videosKey = videosMovie[0].key;
+            
+            let MovievideosKey = null;
+
+            if(videosMovie.length !== 0){
+                MovievideosKey = videosMovie[0].key;
+            }
+        
             setMovieData({
                 nowPlayingMovie,
                 popularMovie,
                 upcomingMovie,
                 latestMovie,
-                videosKey
+                MovievideosKey
             });
         }catch(error){
             console.log(error)
@@ -39,14 +45,15 @@ function MovieContainer(){
                 setMovieSearchData(null);
             }else{
                 const {data : {results : searchMovie}} = await searchMovieReq.search(search);
-                console.log(searchMovie)
-                setMovieSearchData({...searchMovie})
+              
+                setMovieSearchData([...searchMovie])
             }
         }catch(error){
             console.log(error)
         }
         
     }
+
 
     useEffect(()=>{
         getMovie();

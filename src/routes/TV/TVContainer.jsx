@@ -14,13 +14,20 @@ function TVContainer(){
             const {data : latestTV} = await tvReq.latest();
             const {data : {results : airingTodayTV}} = await tvReq.airingToday();
             const {data : {results : popularTV}} = await tvReq.popular();
-            const {data : {results : detailTV}} = await tvReq.videos(airingTodayTV[Math.floor(Math.random()*19)].id);
-            const detailKey = detailTV[0].key;
+            const {data : {results : videoTV}} = await tvReq.videos(airingTodayTV[Math.floor(Math.random()*19)].id);
+    
+            let tvvideosKey = null;
+
+            if(videoTV.length !== 0){
+                tvvideosKey = videoTV[0].key;
+                console.log(tvvideosKey)
+            }
+
             setTVData({
                 latestTV,
                 airingTodayTV,
                 popularTV,
-                detailKey
+                tvvideosKey
             })
             
         }catch(error){

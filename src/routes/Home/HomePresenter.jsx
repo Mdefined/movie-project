@@ -113,7 +113,7 @@ function HomePresenter({moviedata, tvdata, searchData}){
                             </PaddingContainer>
                         </ContentsContainer>
                     </HomeWrap>
-                ): "null"}
+                ): null}
             </>
         );
     }else if(searchData.length === 0){

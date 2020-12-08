@@ -2,6 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import HomePresenter from './HomePresenter';
 import {movieReq, tvReq, searchMovieReq} from '../../api/api';
 import SearchContext from '../../components/Context';
+import {useLottie} from 'lottie-react';
+import reactLOGO from "../../static/loading.json"
+import Lottie from 'lottie-react'
 
 function HomeContainer(){
 
@@ -74,9 +77,20 @@ function HomeContainer(){
         getSearchData()        
     },[search])
 
+    const Loading = () =>{
+        const options = {
+            animationData: reactLOGO,
+            loop: true,
+            autoplay: true,
+        }
+    }
+
+    
+  const { View } = useLottie(Loading);
+
     return(
         <>
-            {load ? "로딩중" : (<HomePresenter searchData={searchData} moviedata={moviedata} tvdata={tvdata}/>)}
+            {load ? (<Lottie animationData={reactLOGO} width={100} />) : (<HomePresenter searchData={searchData} moviedata={moviedata} tvdata={tvdata}/>)}
         </>
     );
 }

@@ -3,9 +3,7 @@ import Footer from './Footer';
 import GlobalStyles from './GlobalStyles';
 import styled from 'styled-components';
 import {SearchProvider} from './Context';
-import {useState, useEffect} from 'react';
-// import lottie from "lottie-web";
-// import reactLogo from "../static/loading.json"
+import {useState} from 'react';
 
 
 const Mainwrap = styled.div`
@@ -17,14 +15,7 @@ const Mainwrap = styled.div`
 
 
 function App() {
-
-  // useEffect(()=>{
-  //   lottie.loadAnimation({
-  //     container: document.querySelector("#react-logo"),
-  //     animationData: reactLogo
-  //   });
-  // },[])
-
+  
   const [search, setSearch] = useState("");
 
   const getSearchValue = (e) => {
@@ -34,7 +25,6 @@ function App() {
   return (
     <SearchProvider value={{search, getSearchValue}}>
       <Mainwrap>
-      {/* <div id="react-logo" /> */}
         <Routers />
         <Footer />
         <GlobalStyles />
