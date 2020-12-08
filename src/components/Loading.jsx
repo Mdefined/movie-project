@@ -10,7 +10,7 @@ function Loading() {
 
     return(
         <LoadingContainer>
-            <Lottie options={options} animationData={reactLOGO} style={{width:300, height:300}} />
+            <Lottie options={options} animationData={reactLOGO} style={{width:200, height:200}} />
         </LoadingContainer>
     );    
 }

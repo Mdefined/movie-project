@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { tvReq } from '../../api/api';
 import TVPresenter from './TVPresenter';
 import Loading from '../../components/Loading';
+import SearchContext from '../../components/Context';
 
 
 function TVContainer(){
 
     const [load, setLoad] = useState(true);
     const [tvData, setTVData] = useState({});
+    const {search} = useContext(SearchContext);
+    const [searchTV, setSearchTV] = useState([]);
 
     const getTVData = async () =>{
         try{
@@ -20,7 +23,6 @@ function TVContainer(){
 
             if(videoTV.length !== 0){
                 tvvideosKey = videoTV[0].key;
-                console.log(tvvideosKey)
             }
 
             setTVData({
@@ -36,15 +38,24 @@ function TVContainer(){
             setLoad(false)
         }
     }
+
+    const getSearchTV = () =>{
+        console.log(search);
+        setSearchTV();
+    }
+
     useEffect(()=>{
         getTVData();
     },[])
     
+    useEffect(()=>{
+        getSearchTV();
+    },[search])
 
     return(
         <>
             {
-                load ? <Loading /> : <TVPresenter tvData={tvData}/>               
+                load ? <Loading /> : <TVPresenter searchTV={searchTV} tvData={tvData}/>               
             }
         </>
     );

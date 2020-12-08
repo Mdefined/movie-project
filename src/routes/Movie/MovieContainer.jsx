@@ -51,10 +51,8 @@ function MovieContainer(){
             }
         }catch(error){
             console.log(error)
-        }
-        
+        }        
     }
-
 
     useEffect(()=>{
         getMovie();
