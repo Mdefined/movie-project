@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { movieReq, searchMovieReq } from '../../api/api';
 import SearchContext from '../../components/Context';
 import MoviePresenter from './MoviePresenter';
+import Loading from '../../components/Loading';
 
 function MovieContainer(){
 
@@ -66,7 +67,7 @@ function MovieContainer(){
     return(
         <>
             {
-                load ? null : (<MoviePresenter movieSearchData={movieSearchData} movieData={movieData}/>) 
+                load ? <Loading /> : (<MoviePresenter movieSearchData={movieSearchData} movieData={movieData}/>) 
             } 
         </>               
     );

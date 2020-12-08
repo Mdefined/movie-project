@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { tvReq } from '../../api/api';
 import TVPresenter from './TVPresenter';
-
+import Loading from '../../components/Loading';
 
 
 function TVContainer(){
@@ -44,7 +44,7 @@ function TVContainer(){
     return(
         <>
             {
-                load ? "로딩중" : <TVPresenter tvData={tvData}/>               
+                load ? <Loading /> : <TVPresenter tvData={tvData}/>               
             }
         </>
     );
