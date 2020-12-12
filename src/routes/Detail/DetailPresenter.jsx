@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {VideoContainer, ContentsContainer, NonePreviewWrap} from '../../components/Container';
 
-const PaddingWrap = styled.div`
-    padding-top:70px;
-`;
-
 const ImgBox = styled.div`
     width:100%; 
     height:500px;
@@ -50,7 +46,12 @@ function DetailPresenter({data}){
                             <h2>PREVIEW</h2>
                             {
                                 data.detailKey ? (
-                                    <iframe className="preview-video" width="100%" height="650" src={`https://www.youtube.com/embed/${data.detailKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe
+                                    className="preview-video"
+                                    width="100%" height="650"
+                                    src={`https://www.youtube.com/embed/${data.detailKey}`}
+                                    rameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                                 ) : (<NonePreviewWrap>미리보기 없음</NonePreviewWrap>)
                             }
                             

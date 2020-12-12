@@ -51,10 +51,10 @@ const NoneresultTitle = styled.div`
 function HomePresenter({moviedata, tvdata, searchData}){
     
     const [random, setRandom] = useState(0);
-    const {search} = useContext(SearchContext); 
+    const {search, random: randomFunc} = useContext(SearchContext); 
 
     useEffect(() => {
-        setRandom(Math.floor(Math.random()*20));
+        setRandom(randomFunc());
     },[])
 
     if(!searchData){
@@ -116,14 +116,16 @@ function HomePresenter({moviedata, tvdata, searchData}){
                 ): null}
             </>
         );
-    }else if(searchData.length === 0){
+    }
+    if(searchData.length === 0){
         return(
             <SubContainer>
                 <NoneresultTitle>{search} 검색 결과없음</NoneresultTitle>
             </SubContainer>
         );
 
-    }else if(searchData.length > 0){
+    }
+    if(searchData.length > 0){
         return(
             <>
                 <ContentsContainer>

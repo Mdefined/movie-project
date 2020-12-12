@@ -9,15 +9,16 @@ function TVContainer(){
 
     const [load, setLoad] = useState(true);
     const [tvData, setTVData] = useState({});
-    const {search} = useContext(SearchContext);
+    const {search, random} = useContext(SearchContext);
     const [searchTV, setSearchTV] = useState(null);
 
     const getTVData = async () =>{
         try{
+            const randomNumber = random();
             const {data : latestTV} = await tvReq.latest();
             const {data : {results : airingTodayTV}} = await tvReq.airingToday();
             const {data : {results : popularTV}} = await tvReq.popular();
-            const {data : {results : videoTV}} = await tvReq.videos(airingTodayTV[Math.floor(Math.random()*19)].id);
+            const {data : {results : videoTV}} = await tvReq.videos(airingTodayTV[randomNumber].id);
     
             let tvvideosKey = null;
 

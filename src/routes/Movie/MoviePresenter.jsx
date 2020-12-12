@@ -63,13 +63,15 @@ function MoviePresenter({movieData, movieSearchData}){
                 </ContentsContainer>
             </>
         );
-    }else if(movieSearchData.length === 0){
+    }
+    if(movieSearchData.length === 0){
         return (
             <SubContainer>
                 <NoneresultTitle>{search} 검색 결과없음</NoneresultTitle>
             </SubContainer>
         );
-    }else if(movieSearchData.length > 0){
+    }
+    if(movieSearchData.length > 0){
         return(
             <>
                 <ContentsContainer>

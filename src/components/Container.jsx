@@ -9,6 +9,7 @@ const Container = styled.div`
     justify-content:flex-start;
 `;
 
+
 export const Contents = styled.div`
     width:100%;
     padding:70px 0;

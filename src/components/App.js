@@ -17,13 +17,15 @@ const Mainwrap = styled.div`
 function App() {
   
   const [search, setSearch] = useState("");
-
+  function random(){
+    return Math.floor(Math.random()*19);
+  }
   const getSearchValue = (e) => {
     const {value} = e.target;
     setSearch(value);
 }
   return (
-    <SearchProvider value={{search, getSearchValue}}>
+    <SearchProvider value={{search, getSearchValue, random}}>
       <Mainwrap>
         <Routers />
         <Footer />
